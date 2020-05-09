@@ -2,14 +2,14 @@
 ArrayList<Star> stars;
 
 void setup() {
-  size(1000,1000);
+  size(500,500);
   stroke(#FCFBE3);
   
   stars = new ArrayList<Star>();
   
   int star_index = 0;
   while (star_index < 250) {
-  stars.add(new Star(random(0,1000), random(0,1000), random(0.1, 2), random(10, 15)) );
+  stars.add(new Star(random(0,500), random(0,500), random(0.1, 2), random(10, 15)) );
   star_index ++;
   }
   

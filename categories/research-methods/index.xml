@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research Methods on LTD Personal Website</title>
+    <link>/categories/research-methods/</link>
+    <description>Recent content in Research Methods on LTD Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/research-methods/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why Confidence Intervals matter: An imagined dialogue</title>
+      <link>/2020/01/22/why-confidence-intervals-matter-an-imagined-dialogue/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/01/22/why-confidence-intervals-matter-an-imagined-dialogue/</guid>
+      <description>Motivation Despite sociology chatter to the contrary, the below is an attempt to illustrate that the practical value of confidence intervals can be articulated in a straightforward way, and can be understood by decision-makers.
+Setup The scene takes place between a civil servant (CS) in the ‘Department of Learning’ and an academic researcher (AR). The latter is advising the former on research methods, and the way that the civil service might go about collecting and interpreting data on the performance of schools, and different educational programs.</description>
+    </item>
+    
+  </channel>
+</rss>

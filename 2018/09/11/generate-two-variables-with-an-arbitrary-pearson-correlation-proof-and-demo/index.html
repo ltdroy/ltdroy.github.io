@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.2" />
+
+
+<title>Generate two variables with an arbitrary Pearson correlation (proof and demo) - LTD Personal Website</title>
+<meta property="og:title" content="Generate two variables with an arbitrary Pearson correlation (proof and demo) - LTD Personal Website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ltdroy">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/laurencedroy/">LinkedIn</a></li>
+    
+    <li><a href="https://www.researchgate.net/profile/Laurence_Droy">ResearchGate</a></li>
+    
+    <li><a href="/categories/">Technologies</a></li>
+    
+    <li><a href="/tags/">Topics</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">Generate two variables with an arbitrary Pearson correlation (proof and demo)</h1>
+
+    
+    <span class="article-meta">
+      LTD / 11 Sep 2018 <br>
+      
+      
+      Categories:
+      
+      <a href='/categories/r'>R</a>
+      <br>
+      
+      
+      
+      Tags:
+      
+      <a href='/tags/probability'>Probability</a>
+      
+      <a href='/tags/correlation'>Correlation</a>
+      <br>
+      
+      <br>
+    </span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="theorem" class="section level2">
+<h2>Theorem</h2>
+<p><span class="math display">\[y = x + \epsilon\]</span></p>
+<p>Where <span class="math inline">\(x\)</span> and <span class="math inline">\(\epsilon\)</span> are random independent variables and <span class="math inline">\(\epsilon\)</span> has an expected value of 0.</p>
+<p><span class="math display">\[\implies \rho_{x,y} = \frac{\sigma_x}{\sqrt{\sigma_x^2 + \sigma_{\epsilon}^2} }\]</span></p>
+<p>Where <span class="math inline">\(\rho_{x,y}\)</span> is the Pearson product moment correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and <span class="math inline">\(\sigma_x\)</span> is the standard deviation of <span class="math inline">\(x\)</span>, etc.</p>
+</div>
+<div id="proof" class="section level2">
+<h2>Proof</h2>
+<p>To prove this we rely on the following previously established theorems regarding the properties of the expected value operator (<span class="math inline">\(E[\cdot]\)</span>), the definition of variance of a random variable in terms of expected value, and the definition of the Pearson correlation.</p>
+<p>The person correlation can be defined:</p>
+<p><span class="math display">\[\rho_{x,y} = \frac{E[(x - E[x])(y - E[y])]}{\sigma_x \cdot \sigma_y}\]</span>
+Where <span class="math inline">\(E[\cdot]\)</span> is the expected value operator, which has the following established properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(E\)</span> is distributive with respect to addition: <span class="math inline">\(E(x) + E(y) = E(x + y)\)</span></li>
+<li>If <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent, E is distributive with respect to multiplication: <span class="math inline">\(x \perp y \rightarrow E(xy) = E(x) \cdot E(y)\)</span></li>
+<li>The expected value operator applied to a non-random variable, returns that variable, e.g.: <span class="math inline">\(E(2) = 2, E(E(x)) = E(x)\)</span>.</li>
+<li>Constants can be factored our of the expected value operator, such that <span class="math inline">\(E(x\cdot E(x)) = E(x)^2\)</span></li>
+</ol>
+<p>Finally, we rely on the following definition of the variance of a random variable:</p>
+<p><span class="math display">\[\sigma_x^2 = V(x) = E[x^2] - E[x]^2\]</span></p>
+<p>Proof of the theorem depends on the simplification of the denominator and the numerator in the definition of the Pearson correlation, for the case in which <span class="math inline">\(y = x + \epsilon\)</span>. We will treat these separately for notational convenience.</p>
+<p><span class="math display">\[ E[(x - E[x])(y - E[y])] \]</span>
+<span class="math display">\[ = E[xy - x E[y] - yE[x] + E[x]E[y]] \]</span>
+<span class="math display">\[ = E(xy) - E(xE[y]) - E(yE[x]) + E(E[x]E[y]) \]</span>
+<span class="math display">\[ = E(xy) - E(x)E(y) - E(x)E(y) + E(x)E(y)\]</span></p>
+<p><span class="math display">\[ = E(xy) - E(x)E(y) \]</span></p>
+<p><span class="math display">\[ sub. y = x + \epsilon \implies ... = E[x(x+\epsilon)] - E[x]E[x+\epsilon] \]</span>
+<span class="math display">\[ = E[x^2] + E(x\cdot\epsilon) - E[x](E[x] + E[\epsilon])\]</span>
+<span class="math display">\[ = E[x^2] + E(x\cdot\epsilon) - E[x]^2 - E[x]E[\epsilon]\]</span></p>
+<p><span class="math display">\[ x \perp \epsilon \implies ... = E[x^2] + E[x]E[\epsilon] - E[x]^2 - E[x]E[\epsilon]\]</span></p>
+<p><span class="math display">\[ = E[x^2] - E[x]^2 = \sigma_x^2\]</span></p>
+<p>So, in the case where <span class="math inline">\(y = x + \epsilon\)</span>, <span class="math inline">\(E(\epsilon) = 0\)</span> and <span class="math inline">\(x \perp \epsilon\)</span>, the co-variance of x and y will be equal to the variance of <span class="math inline">\(x\)</span>.</p>
+<p>Therefore we can re-state the Pearson correlation between x and y as:</p>
+<p><span class="math display">\[\rho_{x,y} = \frac{\sigma_x \cdot \sigma_x}{\sigma_x \cdot \sigma_y}\]</span>
+<span class="math display">\[\implies \rho_{x,y} = \frac{\sigma_x}{\sigma_y}\]</span></p>
+<p>We can assume that <span class="math inline">\(\sigma_y\)</span> is unknown, whereas <span class="math inline">\(\sigma_x\)</span> and <span class="math inline">\(\sigma_{\epsilon}\)</span> are known. As such, it is helpful to re-write this as:</p>
+<p><span class="math display">\[\implies \rho_{x,y} = \frac{\sigma_x}{\sigma_y} = \frac{\sigma_x}{\sqrt{\sigma_x^2 + \sigma_{\epsilon}^2}}\]</span></p>
+<p>This follows from the distributivity of the variance operator <span class="math inline">\(V(\cdot)\)</span> with respect to addition, under independence of random variables:</p>
+<p><span class="math display">\[x \perp \epsilon \implies V(x + \epsilon) = V(x) + V(\epsilon)\]</span>
+This can be proved by substituting the definition of <span class="math inline">\(y = x + \epsilon\)</span> into the definition of the variance of <span class="math inline">\(y\)</span> in terms of <span class="math inline">\(E[]\)</span>, and then simplifying. The distributivity of the variance operator with respect to addition depends on the independence of <span class="math inline">\(\epsilon\)</span> and <span class="math inline">\(x\)</span>, but doesn’t require that <span class="math inline">\(E(\epsilon)\)</span> or <span class="math inline">\(E(x)\)</span> be equal to 0 (as other parts of the proof do).</p>
+<p>As such, we can note that:</p>
+<p><span class="math display">\[ \sigma_y = \sqrt{V(y})  \implies \sigma_y = \sqrt{V(x) + V(\epsilon)} = \sqrt{\sigma_x^2 + \sigma_{\epsilon}^2} \]</span></p>
+</div>
+<div id="application" class="section level2">
+<h2>Application</h2>
+<p>The intended application of the theorem is the generation of random variables which have an arbitrary degree of correlation with some prior variable. Rearranging the theorem (assuming all values are positive and greater than 0) above shows that this can be achieved using the following formulation:</p>
+<p><span class="math display">\[y = x + \epsilon\]</span></p>
+<p>Where:</p>
+<p><span class="math display">\[\sigma_{\epsilon} = \frac{\sqrt{\sigma_x^2 - \rho_{x,y}\cdot \sigma_x^2}}{\rho_{x,y}}\]</span></p>
+<p>With the desired <span class="math inline">\(\rho_{x,y}\)</span> chosen arbitrarily. <span class="math inline">\(\epsilon\)</span> can have any probability density as long as <span class="math inline">\(E(\epsilon) = 0\)</span>.</p>
+</div>
+<div id="demonstration-monte-carlo-simulation" class="section level2">
+<h2>Demonstration (Monte-Carlo Simulation)</h2>
+<p>The following demonstrates the application of the theorem in generating associated distributions.</p>
+<pre class="r"><code>library(purrr)
+library(ggplot2)
+
+# This function takes a desired correlation coefficient
+#  it returns an actual correlation coefficient (pearson produce moment),
+#  after applying the above formula in a simple monte-carlo experiment
+
+simulate.correlation &lt;- function(desired.rho=0.5){
+  # x is drawn (with replacement) from a normal distribution with a 
+  # a uniform random mean in [0,10] and random uniform std.d in [1, 5]
+  sigma_x &lt;- runif(n = 1, min = 1, max = 5)
+  x &lt;- rnorm(n = 10000, mean = runif(n = 1, min = 0, max = 10), sd = sigma_x)
+  
+  # Application of the theorem
+  sigma_e &lt;- sqrt(sigma_x^2 - (desired.rho^2 * sigma_x^2))  /  desired.rho
+  
+  # Generating y through elementwise addition of x and a random distribution (epsilon) of equal length
+  y &lt;- x + rnorm(n = 10000, mean = 0, sd = sigma_e)
+  
+  #print(sigma_x / sqrt(var(y))) 
+  
+  # Calculate pearson correlation
+  rho.x.y &lt;- cor(x,y,method = &quot;pearson&quot;)
+  
+  # Return achieved correlation
+  return(rho.x.y)
+  
+}
+
+samples &lt;- data.frame(x=seq(from=0.01, to=1, by=0.01))
+
+samples$y &lt;- map_dbl(samples$x, simulate.correlation)
+
+ggplot(samples, aes(x=x, y=y)) + geom_point() + labs(x=&quot;Desired Correlation&quot;, y=&quot;Achieved Correlation&quot;)</code></pre>
+<p><img src="/post/2018-09-11-generate-two-variables-with-an-arbitrary-pearson-correlation-proof-and-demo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>As the figure above shows, the new distribution has an arbitrary prescribed correlation with the random prior distribution.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

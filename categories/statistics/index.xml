@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on LTD Personal Website</title>
+    <link>/categories/statistics/</link>
+    <description>Recent content in Statistics on LTD Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Generate two variables with an arbitrary Pearson correlation (proof and demo)</title>
+      <link>/2018/09/11/generate-two-variables-with-an-arbitrary-pearson-correlation-proof-and-demo/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/11/generate-two-variables-with-an-arbitrary-pearson-correlation-proof-and-demo/</guid>
+      <description>Theorem\[y = x + \epsilon\]
+Where \(x\) and \(\epsilon\) are random independent variables and \(\epsilon\) has an expected value of 0.
+\[\implies \rho_{x,y} = \frac{\sigma_x}{\sqrt{\sigma_x^2 + \sigma_{\epsilon}^2} }\]
+Where \(\rho_{x,y}\) is the Pearson product moment correlation between \(x\) and \(y\), and \(\sigma_x\) is the standard deviation of \(x\), etc.
+ProofTo prove this we rely on the following previously established theorems regarding the properties of the expected value operator (\(E[\cdot]\)), the definition of variance of a random variable in terms of expected value, and the definition of the Pearson correlation.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.2" />
+
+
+<title>Stats puzzle solution: How long until you can expect to win the lottery? - LTD Personal Website</title>
+<meta property="og:title" content="Stats puzzle solution: How long until you can expect to win the lottery? - LTD Personal Website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ltdroy">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/laurencedroy/">LinkedIn</a></li>
+    
+    <li><a href="https://www.researchgate.net/profile/Laurence_Droy">ResearchGate</a></li>
+    
+    <li><a href="/categories/">Technologies</a></li>
+    
+    <li><a href="/tags/">Topics</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Stats puzzle solution: How long until you can expect to win the lottery?</h1>
+
+    
+    <span class="article-meta">
+      LTD / 05 Mar 2019 <br>
+      
+      
+      Categories:
+      
+      <a href='/categories/r'>R</a>
+      <br>
+      
+      
+      
+      Tags:
+      
+      <a href='/tags/probability'>Probability</a>
+      <br>
+      
+      <br>
+    </span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="the-problem" class="section level2">
+<h2>The Problem</h2>
+<p>In the main game of the National Lottery (Lotto), the chance that one ticket wins a share of the Jackpot is 1 in 13,983,816.</p>
+<p>Susie plans to buy 100 tickets with different numbers in each draw until she wins a Jackpot share. There are two draws per week.</p>
+<p>Which of the following is closest to the time she can expect to wait until she wins a Jackpot share?</p>
+<ol style="list-style-type: upper-alpha">
+<li>45 years</li>
+<li>145 years</li>
+<li>1,345 years</li>
+<li>13,445 years</li>
+</ol>
+</div>
+<div id="solution-1-in-terms-of-the-declining-probability-of-getting-nothing" class="section level2">
+<h2>Solution 1: In terms of the (declining) probability of getting nothing</h2>
+<p>One way to address this problem is to look at how the probability of <em>not</em> winning declines for Susie over time. We can start by defining the probability of winning in a single draw. We can assume from the question that there are 13,983,816 possible lottery numbers to choose from and that every ticket is equally likely. In every draw Susie chooses 100 different tickets. The probability of one-of <span class="math inline">\(n\)</span> <em>mutually exclusive</em> independent events occurring is equal to the sum of the probabilities for each of the events. As such, the probability of Susie winning in a single lottery draw (remember, she buys 100 tickets each time), is:</p>
+<p><span class="math display">\[P(Win) = \frac{100}{13983816}\]</span>
+The probability of her <em>not</em> winning, is <span class="math inline">\(1 - P(Win)\)</span>. Now the probability of her not winning in a given year, is the probability of her not winning in <em>any</em> of the draws in that year. The probability of two independent non-mutually exclusive events both occurring is the product of the two individual probabilities. So the probability of Susie not winning in a year is:</p>
+<p><span class="math display">\[[1-P(Win)]^{104} = 0.9992566\]</span>
+Since there are 104 draws each year. The probability of not winning over <span class="math inline">\(m\)</span> years, then, is this value to the power of <span class="math inline">\(m\)</span> (since we are multiplying it by itself <span class="math inline">\(m\)</span> times). The following plots this value for the first 2000 years, with a horizontal line added where the probability of not winning reaches 50%, and vertical lines for each of the multiple choice options.</p>
+<pre class="r"><code>plot(1:2000, 0.9992566^(1:2000), xlab = &quot;Years&quot;, ylab=&quot;Probability of not winning for that many years&quot;) 
+abline(a=0.5, b=0)
+abline(v=45)
+abline(v=145)
+abline(v=1345)</code></pre>
+<p><img src="/post/2020-05-09-stats-puzzle-solution-how-long-until-you-can-expect-to-win-the-lottery_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>We can see that the first two options are quite close to 1, in other words, even buying 200 tickets per week, one’s chances of not winning the main jackpot are very high, even after 145 years. After 1345 years though, the chances of winning are better than even. Interestingly, none of the multiple choice options correspond to the 50% chance of not winning.</p>
+<p>This approach actually seems quite sensible for the risk averse. After-all, the approach clearly addresses the level of risk (of not winning) associated with a particular lottery playing strategy. However, this strategy requires us, somewhat arbitrarily, to choose a risk cut-off, after which we say we ‘expect’ to win. The strategy would probably lead us to the right answer (according to the questioner) which is 1345. However, there is another approach which gives a more precise answer, from a different perspective.</p>
+</div>
+<div id="solution-2-in-terms-of-expected-value" class="section level2">
+<h2>Solution 2: In terms of ‘expected value’</h2>
+<p>Another approach is to try to think of this as a random <em>process</em> which has a kind of average value. To do this, we have to use a random variable. A random variable represents the outcome of a random process, where each of the possible outcomes has a probability associated with it. Random variables are useful, because we can ask questions like: on average, what will the output from a process be (called taking expected value) or, on average, how much will the output vary relative to the average (called taking the variance).</p>
+<p>The challenge for this problem, is to represent (using random variables) a process which involves playing the lottery for <span class="math inline">\(m\)</span> years (which is our variable of interest), and to ask at what point (what value of <span class="math inline">\(m\)</span>) the expected value (average output) of that process is equal to one lottery ticket. This is like saying we want to design a process (involving playing the lottery for <span class="math inline">\(m\)</span> years each time the process is run) which <em>on average</em> (if we were to run the process many times) produces 1 lottery ticket. Having represented this process in an equation, we solve the equation to find out what our unknown value (<span class="math inline">\(m\)</span>) should be.</p>
+<p>We will use a random variable called <span class="math inline">\(X\)</span> which represents the number of winning tickets after playing the lottery once with 100 tickets. Only 1 ticket can win the jackpot, so <span class="math inline">\(X=0\)</span> or <span class="math inline">\(X=1\)</span>. <span class="math inline">\(X=0\)</span> with probability <span class="math inline">\(1-P(Win)\)</span> and <span class="math inline">\(X=1\)</span> with probability <span class="math inline">\(P(Win)\)</span>. <span class="math inline">\(N\)</span> represents the number of times we win the jackpot over <span class="math inline">\(m\)</span> years:</p>
+<p><span class="math display">\[N = m [104 \cdot X] \]</span></p>
+<p>The reason for this is that we play 104 draws per year, so the output of each year (in terms of the number of tickets won) is <span class="math inline">\(104X\)</span>. We then play for <span class="math inline">\(m\)</span> years. Now, lets say we define the number of years until we ‘expect’ to win the lottery, as the value of <span class="math inline">\(m\)</span> for which the average (if we were to repeat this process many times) value of <span class="math inline">\(N\)</span> is 1. Using ‘expected value’ notation:</p>
+<p><span class="math display">\[E[N] = 1\]</span></p>
+<p>This implies that:</p>
+<p><span class="math display">\[ E[m (104 \cdot X)] = 1 \]</span>
+Based on the rules for the expected value operator, this is equivalent to saying:</p>
+<p><span class="math display">\[ 104 m \cdot E[X] = 1 \]</span>
+<span class="math display">\[\implies  m = \frac{1}{104\cdot E[X]} \]</span></p>
+<p>Now, the expected value of <span class="math inline">\(X\)</span>, is the sum of each of the outputs multiplied by the probability of that output. We can discard the output which is 0, so the expected value of <span class="math inline">\(X\)</span> is equal to: <span class="math inline">\(1 \cdot P(win)\)</span>, which is equal to: <span class="math inline">\(\frac{100}{13983816}\)</span>. Substituting that back into the equation, we find that:</p>
+<p><span class="math display">\[m = \frac{1}{104\cdot \frac{100}{13983816}} = 1344.598\]</span>
+Which is right next to option C. for the original problem (which is the correct answer).</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

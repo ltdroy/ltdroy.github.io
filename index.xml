@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LTD </title>
+    <title>LTD Personal Website</title>
     <link>/</link>
-    <description>Recent content on LTD </description>
+    <description>Recent content on LTD Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Dec 2016 21:49:57 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A Plain Markdown Post</title>
-      <link>/2016/12/30/a-plain-markdown-post/</link>
-      <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
+      <title>Twinkling Starry Night with JS and Processing (Interactive)</title>
+      <link>/2020/02/16/draw-twinkling-stars-with-javascript-and-processing/</link>
+      <pubDate>Sun, 16 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2016/12/30/a-plain-markdown-post/</guid>
-      <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
- You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
+      <guid>/2020/02/16/draw-twinkling-stars-with-javascript-and-processing/</guid>
+      <description>Background I&amp;rsquo;ve been learning about algorithmic art, which is a visual art genre that uses an algorithm (usually coded on a computer) to draw interesting or evocative images. While it is possible to do this in many languages, I decided to delve into the Processing language, which is a Java-style language and development environment that is specialised for visualisation.
+What is this? This is an early casual output of that exploration.</description>
+    </item>
+    
+    <item>
+      <title>Why Confidence Intervals matter: An imagined dialogue</title>
+      <link>/2020/01/22/why-confidence-intervals-matter-an-imagined-dialogue/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/01/22/why-confidence-intervals-matter-an-imagined-dialogue/</guid>
+      <description>Motivation Despite sociology chatter to the contrary, the below is an attempt to illustrate that the practical value of confidence intervals can be articulated in a straightforward way, and can be understood by decision-makers.
+Setup The scene takes place between a civil servant (CS) in the ‘Department of Learning’ and an academic researcher (AR). The latter is advising the former on research methods, and the way that the civil service might go about collecting and interpreting data on the performance of schools, and different educational programs.</description>
+    </item>
+    
+    <item>
+      <title>Stats puzzle solution: How long until you can expect to win the lottery?</title>
+      <link>/2019/03/05/stats-puzzle-solution-how-long-until-you-can-expect-to-win-the-lottery/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/03/05/stats-puzzle-solution-how-long-until-you-can-expect-to-win-the-lottery/</guid>
+      <description>The ProblemIn the main game of the National Lottery (Lotto), the chance that one ticket wins a share of the Jackpot is 1 in 13,983,816.
+Susie plans to buy 100 tickets with different numbers in each draw until she wins a Jackpot share. There are two draws per week.
+Which of the following is closest to the time she can expect to wait until she wins a Jackpot share?</description>
+    </item>
+    
+    <item>
+      <title>Generate two variables with an arbitrary Pearson correlation (proof and demo)</title>
+      <link>/2018/09/11/generate-two-variables-with-an-arbitrary-pearson-correlation-proof-and-demo/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/11/generate-two-variables-with-an-arbitrary-pearson-correlation-proof-and-demo/</guid>
+      <description>Theorem\[y = x + \epsilon\]
+Where \(x\) and \(\epsilon\) are random independent variables and \(\epsilon\) has an expected value of 0.
+\[\implies \rho_{x,y} = \frac{\sigma_x}{\sqrt{\sigma_x^2 + \sigma_{\epsilon}^2} }\]
+Where \(\rho_{x,y}\) is the Pearson product moment correlation between \(x\) and \(y\), and \(\sigma_x\) is the standard deviation of \(x\), etc.
+ProofTo prove this we rely on the following previously established theorems regarding the properties of the expected value operator (\(E[\cdot]\)), the definition of variance of a random variable in terms of expected value, and the definition of the Pearson correlation.</description>
     </item>
     
     <item>
@@ -27,27 +61,9 @@
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/23/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/2015/07/23/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
-    </item>
-    
-    <item>
-      <title>Lorem Ipsum</title>
-      <link>/2015/01/01/lorem-ipsum/</link>
-      <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
-      
-      <guid>/2015/01/01/lorem-ipsum/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <description>Thanks for visiting my personal website. I use it for sharing casual and serious content, including discussions of research methods, programming projects, and algorithmic art.
+Please feel free to contact me via email at: laurence (dot) t (dot) droy (at) gmail (dot) com
+Laurence T Droy (LTD)</description>
     </item>
     
   </channel>

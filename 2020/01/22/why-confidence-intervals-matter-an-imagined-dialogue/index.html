@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.2" />
+
+
+<title>Why Confidence Intervals matter: An imagined dialogue - LTD Personal Website</title>
+<meta property="og:title" content="Why Confidence Intervals matter: An imagined dialogue - LTD Personal Website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ltdroy">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/laurencedroy/">LinkedIn</a></li>
+    
+    <li><a href="https://www.researchgate.net/profile/Laurence_Droy">ResearchGate</a></li>
+    
+    <li><a href="/categories/">Technologies</a></li>
+    
+    <li><a href="/tags/">Topics</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">Why Confidence Intervals matter: An imagined dialogue</h1>
+
+    
+    <span class="article-meta">
+      LTD / 22 Jan 2020 <br>
+      
+      
+      
+      
+      Tags:
+      
+      <a href='/tags/cis'>CIs</a>
+      <br>
+      
+      <br>
+    </span>
+    
+
+    <div class="article-content">
+      
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Despite sociology chatter to the contrary, the below is an attempt to illustrate that the practical value of confidence intervals <em>can</em> be articulated in a straightforward way, and can be understood by decision-makers.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>The scene takes place between a civil servant (CS) in the ‘Department of Learning’ and an academic researcher (AR). The latter is advising the former on research methods, and the way that the civil service might go about collecting and interpreting data on the performance of schools, and different educational programs. The two are midway through their conversation. AR has just been explaining the difference between samples and populations, and the concept of a sample average</p>
+
+<p><strong>CS:</strong> &hellip;yes, I think I am beginning to understand. We could take some random sample of schools, or students, perhaps in a particular region, and then we ask them about how much GoodStuff they are achieving. To estimate the level of GoodStuff overall, or in some particular group, we calculate a ‘sample average’ of GoodStuff and this is our estimate of the average level of GoodStuff in the population or group as a whole.</p>
+
+<p><strong>AR:</strong> Yes, exactly right! The sample average of GoodStuff, is our best possible estimate of the population mean. It’s not always right, but it should be close to the population mean.</p>
+
+<p><strong>CS:</strong> Oh? Does that mean it can be a bad estimate…? You say it should be close. How close will it be? How often will it be far away from the population mean?</p>
+
+<p><strong>AR:</strong> Well.. it depends. There are a whole range of factors to consider. Bias: did we really a achieve a random sample from the population of interest? Non-response: did some people not respond, and if so, who were they? Representativeness: does the sample we ended up with look like the population we were sampling from?</p>
+
+<p><strong>CS:</strong> Well OK. I understand that things can go wrong in research. We try to sample randomly and we fail, and so on. But saying that ‘things can go wrong’ isn’t terribly helpful. Let’s say we go to the trouble of doing the methodology properly and we manage to get a proper random sample – or something very close to that. How often will sample mean be ‘correct’ then? How many of these estimates can I trust?</p>
+
+<p><strong>AR:</strong> If you want to get very technical, then actually almost none of the sample means will be exactly correct. There will almost always be some variation in the sample mean, relative to the population mean – even if we follow the methodology to the letter.</p>
+
+<p><strong>CS:</strong> What? So you’re saying that even if we do everything right, the sample mean is probably wrong… In that case, why are we bothering in the first place?</p>
+
+<p><strong>AR:</strong> No, no. There is no need to worry on that score. The sample mean won’t exactly match the population mean. But if we do everything right, it will be pretty close.</p>
+
+<p><strong>CS:</strong> Oh I see, well that’s a relief. That brings me back to my question though. If we do everything right, how close should we expect the sample mean to be to the population mean? Afterall, I may need to know if the population mean is changing, or what kinds of values I should expect in the population.</p>
+
+<p><strong>AR:</strong> Well again, that depends. The larger the random sample, the less the sample mean will tend to vary around the population mean. Also, the larger the variation in GoodStuff between the different students or schools that we sampled, the more variation we are likely to see in particular sample means.</p>
+
+<p><strong>CS:</strong> Ok, well that makes sense I suppose. It’s not very specific though. How big a sample do I need, and how much will the variation in GoodStuff between students affect the sample mean? What kind of margin of error can I use to judge a particular estimate? Are you saying I should just pick an arbitrary one?</p>
+
+<p><strong>AR:</strong> No of course not! There is a kind of margin of error that is often used by researchers. It’s called a ‘95% Confidence Interval’.</p>
+
+<p><strong>CS:</strong> Ah I see, tell me about that.</p>
+
+<p><strong>AR:</strong> To understand the confidence interval, we have to start thinking about things more abstractly. We can never know for sure how close a sample average is to the population mean. We might just have been unlucky; our sample mean could be far from the population mean. There is no way to tell –</p>
+
+<p><strong>CS:</strong> - oh so it’s hopeless-</p>
+
+<p><strong>AR:</strong> -no no, wait. We just have to think about the problem a little differently. The first thing to realise is that the sample mean that we calculate is the output of a procedure. In this case, the procedure consists of collecting a random sample, measuring the GoodStuff in each unit, summing them, and dividing by the number of units. This is also called an estimator.  We don’t know whether a particular sample mean is close to the population mean, but we can estimate, on average, how far the output of the estimation procedure will tend to be from the population mean – and how often. This is related to something called the sampling distribution of the estimation procedure. This is the distribution of estimates we would obtain if we repeated the estimation procedure many times for the same population.</p>
+
+<p><strong>CS:</strong> Ah, now we’re getting somewhere. So tell me, how do we estimate this sampling distribution from the data we collect?</p>
+
+<p><strong>AR:</strong> Well, the first thing to note is that the sampling distribution is always centred on the true population mean. That’s why we call the sample average an ‘unbiased’ estimator, because, on average, it gives the true value of the population mean. We also know that as long as we have a reasonable sample size, the sampling distribution will be symmetric and have a ‘bell-curve’ shape. We know this because of an important result called the Central Limit Theorem. So, in order to fully understand the sampling distribution for our estimation procedure (the sample mean), we only need to know how spread out the sampling distribution is. This is estimated in terms of something called the Standard Error of the Mean. This is an estimate of the spread, a.k.a. standard deviation, of the sampling distribution. We can estimate this based on the variability within our sample of data, and the size of our sample.</p>
+
+<p><strong>CS:</strong> Ok, so we can say something about how close the output of our ‘estimation procedure’ - the sample mean, will be to the population mean, on average. But we don’t know how close a particular estimate is in practice? I still don’t see the value of this though. Like you said before, we could be unlucky, and we could end up with an estimate which is right at the edge of the sampling distribution – and we wouldn’t know. Moreover, we usually only have one sample – so what use is information about the distribution of repeated sample means?</p>
+
+<p><strong>AR:</strong> It’s very useful, and I will explain why. First, notice that the original problem you stated wasn’t whether a particular estimate is close to the population mean, it was how often you would be right when using the sample mean, and what kind of margin of error you should allow for. The sampling distribution answers both of those questions. The margin of error you should use is a particular number of ‘Standard Error(s)’ either side of the sample mean. Most researchers use approximately two Standard Errors either side of the sample mean. If you do that consistently in all of your studies, then in 95% of studies the margin of error you calculate will contain the true mean for the population.</p>
+
+<p><strong>CS:</strong> Ah, I’m beginning to see. So I can’t know whether a particular sample mean is close to the population mean, but if I calculate this ‘95% confidence interval’ in all of my studies, and assume the true mean is somewhere within that interval, I will be correct about 95% of the time… assuming I do everything else right in terms of random sampling and so on?</p>
+
+<p><strong>AR:</strong> Yes, that’s exactly right. That’s also why it doesn’t matter that you only collect one sample per-population of interest. The 95% confidence interval works across different samples from different studies. Across any 100 properly conducted studies which calculate 95% confidence intervals, on average, 95 of those intervals will contain the true population mean the researchers were interested in.</p>
+
+<p><strong>CS:</strong> Well that sounds like very systematic. There’s one thing I’m still confused about though. You said that that we calculate this ‘Standard Error’ based on the ‘in-sample’ variation in GoodStuff. But, isn’t this subject to the same problem as the sample mean – that the variation we estimate from our data could vary from sample to sample, meaning that we could be unlucky and have a bad estimate of the Standard Error?</p>
+
+<p><strong>AR:</strong> Yes, that’s correct. The standard error is itself an estimate. But, it turns out that this doesn’t matter. It’s essential that we don’t confuse properties of the sample estimate, with properties of the estimation procedure. The properties of 95% confidence intervals follow from the properties of the estimation procedure, not the sample estimate itself. It turns out, that as long as we use our estimate of the Standard Error consistently for each of our studies, the 95% confidence intervals we calculate will still contain the true population mean in 95% of cases.</p>
+
+<p><strong>CS:</strong> Ok, well this all sounds very sensible. If I want to estimate the population mean of GoodStuff in a particular group, then I take a random sample and then calculate the sample mean. Then, I calculate an interval which is two standard-error’s either side of this sample mean. I then assume that the true mean is somewhere in this interval. If I do this in all of my research, then my assumption will be correct 95% of the time.</p>
+
+<p><strong>AR:</strong> Perfect, yes that’s exactly what you should do. Now, it turns out that we can do something very similar for more sophisticated kinds of estimates, such as the estimates of parameters in regression models….</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+
