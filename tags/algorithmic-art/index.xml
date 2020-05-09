@@ -6,10 +6,20 @@
     <description>Recent content in Algorithmic Art on LTD Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/algorithmic-art/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Algorithmic art: &#39;Spiral Portal&#39;</title>
+      <link>/2020/05/09/algorithmic-art-spiral-portal/</link>
+      <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/09/algorithmic-art-spiral-portal/</guid>
+      <description>After enjoying Antonio Sánchez Chinchón’s DataCamp tutorial on using R and ggplot2 for algorithmic flower drawing based on Phyllotaxis, I decided to spend an afternoon exploring the techniques he covered. I extended the single flower techniques to a multi-flower image with each flower positioned to form an overall flower shape. The effect makes me think of a portal to a strange multicolor world.
+A multicolor spiral portal image built in R and ggplot2</description>
+    </item>
     
     <item>
       <title>Twinkling Starry Night with JS and Processing (Interactive)</title>
